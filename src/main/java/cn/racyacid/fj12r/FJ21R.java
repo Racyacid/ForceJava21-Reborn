@@ -1,7 +1,7 @@
 package cn.racyacid.fj12r;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.FabricLoader;
 
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
@@ -19,10 +19,11 @@ import java.util.logging.Logger;
 public class FJ21R implements ModInitializer {
 	private static final Logger LOGGER = Logger.getLogger("ForceJava21 Reborn");
 
-	@Override
+    @Override
 	public void onInitialize() {
-		Path configPath = FabricLoader.getInstance().getConfigDir();
-		String configFilePath = configPath.toString() + "\\fj21r.properties";
+		// noinspection deprecation
+		Path configPath = FabricLoader.INSTANCE.getConfigDir();
+		String configFilePath = configPath + "\\fj21r.properties";
 
 		// noinspection DataFlowIssue
 		if (!Arrays.asList(configPath.toFile().list()).contains("fj21r.properties")) genConfigFile(configFilePath);
